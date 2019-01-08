@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="infoModel"
+            type="com.imamouse.combook.ui.book.BookInfoViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+
+        <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LineManagers" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="@{infoModel.backOnClickListener}">
+
+        <ImageView
+            android:id="@+id/iv_book_info_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/include_book_header"
+                    layout="@layout/header_book_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="310dp"
+                    bind:infoModel="@{infoModel}" />
+
+                <android.support.v4.widget.NestedScrollView
+                    android:id="@+id/nestscrollview_chapter_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="20dp"
+                                android:gravity="center"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="6dp"
+                                android:paddingRight="10dp"
+                                android:paddingBottom="6dp"
+                                android:text="章节名称"
+                                android:textSize="24sp" />
+
+                            <TextView
+                                android:id="@+id/bookinfo_init_info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="20dp"
+                                android:background="@drawable/radius_rectangle_gradual_color"
+                                android:gravity="center"
+                                android:hint="attention"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="6dp"
+                                android:paddingRight="10dp"
+                                android:paddingBottom="6dp"
+                                android:text="@{infoModel.chapterHead}"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <android.support.v7.widget.RecyclerView
+                            itemBinding="@{infoModel.itemBinding}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/radius_rectangle_greyblue50"
+                            android:nestedScrollingEnabled="false"
+                            android:padding="15dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            binding:items="@{infoModel.observableList}"
+                            binding:layoutManager="@{LayoutManagers.linear()}"
+                            binding:lineManager="@{LineManagers.horizontal()}" />
+                    </LinearLayout>
+                </android.support.v4.widget.NestedScrollView>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/bookinfo_toolbar_image"
+                android:layout_width="match_parent"
+                android:layout_height="310dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/gradual_color_2" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/bookinfo_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:background="@color/transparent"
+                        android:onClick="@{infoModel.backOnClickListener}"
+                        android:padding="3dp"
+                        binding:srcCompat="?attr/actionModeCloseDrawable" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/ic_book" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginStart="10dp"
+                        android:hint="@string/book_title"
+                        android:text="@={infoModel.bookName}"
+                        android:textSize="22sp" />
+                </LinearLayout>
+
+            </android.support.v7.widget.Toolbar>
+        </RelativeLayout>
+    </FrameLayout>
+
+</layout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="comfortableGreen1">#A0EEE1</color>
+    <color name="comfortableBlue1">#BEE7E9</color>
+    <color name="comfortableBrown2">#D1BA74</color>
+    <color name="startColor">#9575CD</color>
+    <color name="centerColor">#7986CB</color>
+    <color name="lightRain">#A5B5F9</color>
+    <color name="iconColorGray">#BDBDBD</color>
+    <color name="gray400">#66BDBDBD</color>
+    <color name="gray700">#616161</color>
+    <color name="gray900">#212121</color>
+</resources>

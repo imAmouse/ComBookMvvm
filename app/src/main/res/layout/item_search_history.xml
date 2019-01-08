@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="historyItemModel"
+            type="com.imamouse.combook.ui.search.start.SearchHistoryItemModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radius_rectangle_greyblue50"
+            android:hint="..."
+            android:minEms="2"
+            android:paddingStart="5dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="2dp"
+            android:gravity="center"
+            android:text="@{historyItemModel.searchText}"
+            android:textSize="10sp" />
+    </LinearLayout>
+</layout>

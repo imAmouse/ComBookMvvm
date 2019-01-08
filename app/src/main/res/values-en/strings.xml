@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Combook</string>
+    <string name="title_home" >Home</string>
+    <string name="title_dashboard" >LookMe</string>
+    <string name="title_notifications" >Find</string>
+    <string name="search">Search What</string>
+    <string name="search_hint">What toy you wang to see?</string>
+    <string name="book_author">Author</string>
+    <string name="book_title">Title</string>
+    <string name="hot_search">Hot Book</string>
+    <string name="last_chapter_name">Last Chapter</string>
+    <string name="time_text">Time</string>
+    <string name="book_from">Book from</string>
+    <string name="unknown">Unknown</string>
+    <string name="chapter_name">Chapter Name</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<data>
+    <variable
+        name="bookreaderItemModel"
+        type="com.imamouse.combook.ui.book.reader.BookReaderTextItemModel"/>
+</data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:text="@={bookreaderItemModel.words}"
+            android:paddingTop="15dp"
+            android:paddingRight="25dp"
+            android:lineSpacingMultiplier="1.5"
+            android:textSize="20sp" />
+    </RelativeLayout>
+</layout>

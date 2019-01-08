@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--按钮样式借鉴自作者：gyymz1993
+    https://www.jianshu.com/p/e5e8a98fc5d9（简书）-->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#99ECEFF1" />
+            <corners
+                android:radius="20dip"/>
+        </shape>
+    </item>
+</selector>

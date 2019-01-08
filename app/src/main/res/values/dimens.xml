@@ -1,0 +1,13 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 取消 BottomNavigationView 选中位移效果，设置字体大小 -->
+    <dimen name="design_bottom_navigation_active_text_size">12dp</dimen>
+    <dimen name="design_bottom_navigation_text_size">12dp</dimen>
+
+    <!-- 设置 ToolBar 高度 及 阴影高度 -->
+    <dimen name="toolbar_height">80dp</dimen>
+    <dimen name="toolbar_shadow_height">7dp</dimen>
+</resources>

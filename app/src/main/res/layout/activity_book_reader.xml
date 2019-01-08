@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="readerModel"
+            type="com.imamouse.combook.ui.book.reader.BookReaderViewModel" />
+
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/sbc_list_item">
+
+        <android.support.v7.widget.RecyclerView
+            itemBinding="@{readerModel.itemBinding}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            binding:items="@{readerModel.observableList}"
+            binding:layoutManager="@{LayoutManagers.linear()}" />
+    </RelativeLayout>
+</layout>
