@@ -2,12 +2,14 @@ package com.imamouse.combook.ui.search;
 
 import android.arch.lifecycle.Observer;
 import android.content.Context;
+import android.databinding.ViewDataBinding;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -16,6 +18,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
 
+import com.dasu.blur.BlurConfig;
 import com.dasu.blur.DBlur;
 import com.dasu.blur.OnBlurListener;
 import com.imamouse.combook.R;
@@ -23,6 +26,7 @@ import com.imamouse.combook.databinding.ActivitySearchBinding;
 import com.imamouse.combook.ui.book.BookInfoActivity;
 import com.imamouse.combook.ui.search.list.SearchListFragment;
 import com.imamouse.combook.ui.search.list.SearchListItemModel;
+import com.imamouse.combook.ui.search.list.SearchListViewModel;
 import com.imamouse.combook.ui.search.start.SearchStartFragment;
 import com.imamouse.combook.utils.SnapshotUtil;
 import com.zia.easybookmodule.bean.Book;
@@ -35,6 +39,7 @@ import me.goldze.mvvmhabit.base.BaseActivity;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
 import me.goldze.mvvmhabit.binding.command.BindingConsumer;
 import me.goldze.mvvmhabit.bus.Messenger;
+import me.goldze.mvvmhabit.utils.KLog;
 
 public class SearchActivity extends BaseActivity<ActivitySearchBinding, SearchViewModel> {
 
@@ -65,9 +70,6 @@ public class SearchActivity extends BaseActivity<ActivitySearchBinding, SearchVi
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_search, mFragments.get(index))
                 .commit();
-
-        if (index == 1)
-            viewModel.startSearch();
     }
 
     /**
@@ -113,13 +115,16 @@ public class SearchActivity extends BaseActivity<ActivitySearchBinding, SearchVi
         binding.edittextSearch.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == android.view.KeyEvent.KEYCODE_ENTER && event.getAction() == android.view.KeyEvent.ACTION_DOWN) {
+                if (keyCode == android.view.KeyEvent.KEYCODE_ENTER
+                        && event.getAction() == android.view.KeyEvent.ACTION_DOWN) {
                     viewModel.startSearchBefore();
                 }
                 return false;
-
             }
         });
+
+        //
+        binding.frameSearch.setDrawingCacheEnabled(true);
     }
 
     /**
@@ -138,6 +143,41 @@ public class SearchActivity extends BaseActivity<ActivitySearchBinding, SearchVi
             public void onChanged(@Nullable SearchViewModel searchViewModel) {
                 setIndexSelected(1);
                 hideKeyboard();
+                binding.cvSearchProgress.setVisibility(View.VISIBLE);
+
+                //为加载界面设置高斯模糊
+                binding.frameSearch.buildDrawingCache();
+                binding.frameSearch.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        // 截取ProgressBar图片
+//                    Bitmap bitmap = SnapshotUtil
+//                            .snapShotWithoutBar(binding.framelayoutSearchProgress, false);
+
+                        //
+                        Bitmap bitmap = Bitmap.createBitmap(binding.frameSearch.getDrawingCache());
+
+                        int[] location = {0, 0};
+                        binding.cvSearchProgress.getLocationInWindow(location);
+                        bitmap = Bitmap.createBitmap(bitmap,
+                                location[0],
+                                location[1] - binding.toolbarSearch.getMeasuredHeight(),
+                                binding.cvSearchProgress.getMeasuredWidth(),
+                                binding.cvSearchProgress.getMeasuredHeight());
+                        DBlur.source(binding.cvSearchProgress.getContext(), bitmap)
+                                .intoTarget(binding.ivSearchProgress)
+                                .mode(BlurConfig.MODE_NATIVE)
+                                .build()
+                                .doBlurSync();
+                    }
+                });
+            }
+        });
+
+        Messenger.getDefault().register(this, SearchListViewModel.TOKEN_SEARCHLISTVIEWMODEL_SEARCHEND, new BindingAction() {
+            @Override
+            public void call() {
+                binding.cvSearchProgress.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -160,7 +200,7 @@ public class SearchActivity extends BaseActivity<ActivitySearchBinding, SearchVi
                                             new BindingAction() {
                                                 @Override
                                                 public void call() {
-                                                        Messenger.getDefault().send(bitmap, TOKEN_SEARCHACTIVITY_SENDBLUR);
+                                                    Messenger.getDefault().send(bitmap, TOKEN_SEARCHACTIVITY_SENDBLUR);
                                                 }
                                             });
                                     viewModel.startActivity(BookInfoActivity.class, mBundle);

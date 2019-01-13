@@ -3,6 +3,7 @@ package com.imamouse.combook.ui.search.list;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -15,6 +16,7 @@ import com.dasu.blur.BlurConfig;
 import com.dasu.blur.DBlur;
 import com.imamouse.combook.R;
 import com.imamouse.combook.databinding.FragmentSearchListBinding;
+import com.imamouse.combook.ui.search.SearchActivity;
 import com.imamouse.combook.utils.SnapshotUtil;
 
 import me.goldze.mvvmhabit.BR;
@@ -27,30 +29,7 @@ public class SearchListFragment extends BaseFragment<FragmentSearchListBinding, 
         @Override
         public void onRefresh() {
             // 使加载界面可见
-            binding.framelayoutSearchProgress.setVisibility(View.VISIBLE);
-
-            //为加载界面设置高斯模糊
-            binding.framelayoutSearchProgress.post(new Runnable() {
-                @Override
-                public void run() {
-                    // 截取ProgressBar图片
-                    Bitmap bitmap = SnapshotUtil
-                            .snapShotWithoutBar(binding.framelayoutSearchProgress, false);
-                    int[] location = {0, 0};
-                    binding.cvSearchProgress.getLocationInWindow(location);
-                    bitmap = Bitmap.createBitmap(bitmap,
-                            location[0],
-                            location[1] - ((Toolbar) getActivity().findViewById(R.id.toolbar_search)).getMeasuredHeight(),
-                            binding.cvSearchProgress.getMeasuredWidth(),
-                            binding.cvSearchProgress.getMeasuredHeight());
-                    DBlur.source(binding.cvSearchProgress.getContext(), bitmap)
-                            .intoTarget(binding.ivSearchProgress)
-                            .mode(BlurConfig.MODE_NATIVE)
-                            .animAlpha(1000)
-                            .build()
-                            .doBlurSync();
-                }
-            });
+            binding.includeProgressSearchList.setVisibility(View.VISIBLE);
 
             // 开始搜索
             ToastUtils.showShort("开始搜索" + viewModel.searchName.get());
@@ -70,7 +49,12 @@ public class SearchListFragment extends BaseFragment<FragmentSearchListBinding, 
 
     @Override
     public void initData() {
+        // Set OnRefreshListener
         binding.swiperefreshSearchList.setOnRefreshListener(onRefreshListener);
+
+        //
+        binding.includeProgressSearchList.setDrawingCacheEnabled(true);
+        binding.includeProgressSearchList.buildDrawingCache();
     }
 
     @Override
@@ -96,7 +80,7 @@ public class SearchListFragment extends BaseFragment<FragmentSearchListBinding, 
         viewModel.endSearch.observe(this, new Observer<SearchListViewModel>() {
             @Override
             public void onChanged(@Nullable SearchListViewModel searchViewModel) {
-                binding.framelayoutSearchProgress.setVisibility(View.INVISIBLE);
+                binding.includeProgressSearchList.setVisibility(View.INVISIBLE);
                 binding.swiperefreshSearchList.setRefreshing(false);
             }
         });

@@ -85,7 +85,7 @@
 
         <FrameLayout
             android:id="@+id/frame_layout"
-            android:layout_width="381dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@drawable/gradual_color_2"
             app:layout_constraintBottom_toTopOf="@+id/view_bottomnavigation_back"

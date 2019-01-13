@@ -28,6 +28,10 @@ public class SearchListViewModel extends BaseViewModel {
 
     public static String TOKEN_SEARCHLISTVIEWMODEL_CREATED = "token_searchlistviewmodel_created";
 
+    public static String TOKEN_SEARCHLISTVIEWMODEL_SEARCHPROGRESS = "token_searchlistviewmodel_searchprogress";
+    public static String TOKEN_SEARCHLISTVIEWMODEL_SEARCHMESSAGE = "token_searchlistviewmodel_searchmessage";
+    public static String TOKEN_SEARCHLISTVIEWMODEL_SEARCHEND = "token_searchlistviewmodel_searchend";
+
     //给RecyclerView添加items
     public final ObservableList<ItemViewModel> searchListItemModelObservableList
             = new ObservableArrayList<>();
@@ -39,9 +43,6 @@ public class SearchListViewModel extends BaseViewModel {
     public MutableLiveData<SearchListViewModel> endSearch = new MutableLiveData();
     //     ......        , 搜索开始
     public MutableLiveData<SearchListViewModel> startSearch = new MutableLiveData();
-
-    public ObservableField<String> searchMessage = new ObservableField<>();
-    public ObservableField<String> searchProgress = new ObservableField<>();
     public ObservableField<String> searchName = new ObservableField<>();
 
     public SearchListViewModel(@NonNull Application application) {
@@ -76,6 +77,8 @@ public class SearchListViewModel extends BaseViewModel {
                     public void onFinish(List<Book> books) {
                         //搜索结果，返回book集合，提示用户选择
                         //recyclerviewAdapter.load(books);
+                        Messenger.getDefault().sendNoMsg(TOKEN_SEARCHLISTVIEWMODEL_SEARCHEND);
+
                         ToastUtils.showShort("搜索完成 ^_^");
                         searchListItemModelObservableList.clear();
                         for (Book book : books) {
@@ -92,13 +95,15 @@ public class SearchListViewModel extends BaseViewModel {
                     @Override
                     public void onMessage(String s) {
                         if (s != null)
-                            searchMessage.set(s);
+                            Messenger.getDefault().send(s,TOKEN_SEARCHLISTVIEWMODEL_SEARCHMESSAGE);
+                            //searchMessage.set(s);
                     }
 
                     @Override
                     public void onProgress(int i) {
                         //搜索进度，0 ~ 100
-                        searchProgress.set(i + "%");
+                        Messenger.getDefault().send(i,TOKEN_SEARCHLISTVIEWMODEL_SEARCHPROGRESS);
+                        //searchProgress.set(i + "%");
                     }
                 });
     }

@@ -11,7 +11,9 @@ import com.imamouse.combook.ui.search.list.SearchListViewModel;
 import me.goldze.mvvmhabit.base.AppManager;
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
+import me.goldze.mvvmhabit.binding.command.BindingConsumer;
 import me.goldze.mvvmhabit.bus.Messenger;
+import me.goldze.mvvmhabit.utils.KLog;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 
 public class SearchViewModel extends BaseViewModel {
@@ -22,6 +24,9 @@ public class SearchViewModel extends BaseViewModel {
     public ObservableField<String> bookName = new ObservableField<>("");
     //与SearchActivity通信，切换搜索Fragment
     public MutableLiveData<SearchViewModel> startSearchBefore = new MutableLiveData();
+
+    public ObservableField<String> searchMessage = new ObservableField<>();
+    public ObservableField<String> searchProgress = new ObservableField<>();
 
     public SearchViewModel(@NonNull Application application) {
         super(application);
@@ -68,6 +73,20 @@ public class SearchViewModel extends BaseViewModel {
             @Override
             public void call() {
                 startSearch();
+            }
+        });
+
+        Messenger.getDefault().register(this, SearchListViewModel.TOKEN_SEARCHLISTVIEWMODEL_SEARCHMESSAGE, String.class, new BindingConsumer<String>() {
+            @Override
+            public void call(String s) {
+                searchMessage.set(s);
+            }
+        });
+
+        Messenger.getDefault().register(this, SearchListViewModel.TOKEN_SEARCHLISTVIEWMODEL_SEARCHPROGRESS, Integer.class, new BindingConsumer<Integer>() {
+            @Override
+            public void call(Integer integer) {
+                searchProgress.set(integer + " %");
             }
         });
     }
