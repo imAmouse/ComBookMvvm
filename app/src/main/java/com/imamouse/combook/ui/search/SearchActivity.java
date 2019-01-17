@@ -2,25 +2,22 @@ package com.imamouse.combook.ui.search;
 
 import android.arch.lifecycle.Observer;
 import android.content.Context;
-import android.databinding.ViewDataBinding;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
 
 import com.dasu.blur.BlurConfig;
 import com.dasu.blur.DBlur;
 import com.dasu.blur.OnBlurListener;
+import com.imamouse.combook.BR;
 import com.imamouse.combook.R;
 import com.imamouse.combook.databinding.ActivitySearchBinding;
 import com.imamouse.combook.ui.book.BookInfoActivity;
@@ -29,17 +26,15 @@ import com.imamouse.combook.ui.search.list.SearchListItemModel;
 import com.imamouse.combook.ui.search.list.SearchListViewModel;
 import com.imamouse.combook.ui.search.start.SearchStartFragment;
 import com.imamouse.combook.utils.SnapshotUtil;
-import com.zia.easybookmodule.bean.Book;
+import com.imamouse.bookmodule.bean.Book;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import me.goldze.mvvmhabit.BR;
 import me.goldze.mvvmhabit.base.BaseActivity;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
 import me.goldze.mvvmhabit.binding.command.BindingConsumer;
 import me.goldze.mvvmhabit.bus.Messenger;
-import me.goldze.mvvmhabit.utils.KLog;
 
 public class SearchActivity extends BaseActivity<ActivitySearchBinding, SearchViewModel> {
 
@@ -130,6 +125,7 @@ public class SearchActivity extends BaseActivity<ActivitySearchBinding, SearchVi
     /**
      * 监听搜索 Search click
      * ->切换到 SearchListFragment
+     * ->为cvSearchProgress(CardView)设置毛玻璃效果
      * ->关闭 输入法软键盘
      * <p>
      * 监听 SearchListItem 切换 BookInfoActivity

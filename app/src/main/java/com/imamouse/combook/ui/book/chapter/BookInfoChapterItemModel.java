@@ -7,12 +7,7 @@ import android.view.View;
 
 import com.imamouse.combook.ui.book.BookInfoViewModel;
 import com.imamouse.combook.ui.book.reader.BookReaderActivity;
-import com.zia.easybookmodule.bean.Catalog;
-import com.zia.easybookmodule.engine.EasyBook;
-import com.zia.easybookmodule.rx.Subscriber;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.imamouse.bookmodule.bean.Catalog;
 
 import me.goldze.mvvmhabit.base.ItemViewModel;
 

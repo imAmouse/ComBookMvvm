@@ -3,15 +3,14 @@ package com.imamouse.combook.ui.book.reader;
 import android.app.Application;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.imamouse.combook.BR;
 import com.imamouse.combook.R;
-import com.zia.easybookmodule.bean.Book;
-import com.zia.easybookmodule.bean.Catalog;
-import com.zia.easybookmodule.engine.EasyBook;
-import com.zia.easybookmodule.rx.Subscriber;
+import com.imamouse.bookmodule.bean.Book;
+import com.imamouse.bookmodule.bean.Catalog;
+import com.imamouse.bookmodule.engine.EasyBook;
+import com.imamouse.bookmodule.rx.Subscriber;
 
 import java.util.ArrayList;
 import java.util.List;

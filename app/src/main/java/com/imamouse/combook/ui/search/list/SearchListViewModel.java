@@ -9,10 +9,10 @@ import android.support.annotation.NonNull;
 
 import com.imamouse.combook.R;
 import com.imamouse.combook.ui.search.SearchViewModel;
-import com.zia.easybookmodule.bean.Book;
-import com.zia.easybookmodule.engine.EasyBook;
-import com.zia.easybookmodule.rx.Disposable;
-import com.zia.easybookmodule.rx.Subscriber;
+import com.imamouse.bookmodule.bean.Book;
+import com.imamouse.bookmodule.engine.EasyBook;
+import com.imamouse.bookmodule.rx.Disposable;
+import com.imamouse.bookmodule.rx.Subscriber;
 
 import java.util.List;
 
@@ -57,6 +57,7 @@ public class SearchListViewModel extends BaseViewModel {
             @Override
             public void call(String s) {
                 searchName.set(s);
+                startSearch();
                 startSearch.setValue(SearchListViewModel.this);
             }
         });
@@ -69,6 +70,12 @@ public class SearchListViewModel extends BaseViewModel {
 
     //添加订阅，提供停止搜索功能
     private Disposable searchDisposable = null;
+
+    public void startSearch() {
+        // 开始搜索
+        ToastUtils.showShort("开始搜索" + searchName.get());
+        searchBook(searchName.get());
+    }
 
     public void searchBook(String searchText) {
         searchDisposable = EasyBook.search(searchText)
@@ -95,14 +102,14 @@ public class SearchListViewModel extends BaseViewModel {
                     @Override
                     public void onMessage(String s) {
                         if (s != null)
-                            Messenger.getDefault().send(s,TOKEN_SEARCHLISTVIEWMODEL_SEARCHMESSAGE);
-                            //searchMessage.set(s);
+                            Messenger.getDefault().send(s, TOKEN_SEARCHLISTVIEWMODEL_SEARCHMESSAGE);
+                        //searchMessage.set(s);
                     }
 
                     @Override
                     public void onProgress(int i) {
                         //搜索进度，0 ~ 100
-                        Messenger.getDefault().send(i,TOKEN_SEARCHLISTVIEWMODEL_SEARCHPROGRESS);
+                        Messenger.getDefault().send(i, TOKEN_SEARCHLISTVIEWMODEL_SEARCHPROGRESS);
                         //searchProgress.set(i + "%");
                     }
                 });

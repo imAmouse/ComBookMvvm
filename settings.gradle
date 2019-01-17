@@ -1,1 +1,1 @@
-include ':app', ':easybookmodule', ':hwtxtreaderlib'
+include ':app', ':bookmodule', ':bookreader', ':shapeloading'

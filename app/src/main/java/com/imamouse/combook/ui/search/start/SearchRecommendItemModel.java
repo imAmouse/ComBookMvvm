@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.zia.easybookmodule.bean.Book;
+import com.imamouse.bookmodule.bean.Book;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.base.ItemViewModel;

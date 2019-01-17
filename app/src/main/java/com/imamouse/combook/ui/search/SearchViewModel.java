@@ -55,6 +55,8 @@ public class SearchViewModel extends BaseViewModel {
 
     public void startSearchBefore() {
         if (!bookName.get().equals("")) {
+            // 首先尝试开始搜索
+            startSearch();
             // 告诉 SearchActivity 切换 Fragment，准备搜索
             startSearchBefore.setValue(SearchViewModel.this);
         } else {

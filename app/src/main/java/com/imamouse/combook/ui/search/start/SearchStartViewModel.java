@@ -10,7 +10,7 @@ import android.support.annotation.NonNull;
 import com.imamouse.combook.R;
 import com.imamouse.combook.view.FlowLayoutManager;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
-import com.zia.easybookmodule.bean.Book;
+import com.imamouse.bookmodule.bean.Book;
 
 import me.goldze.mvvmhabit.BR;
 import me.goldze.mvvmhabit.base.BaseViewModel;

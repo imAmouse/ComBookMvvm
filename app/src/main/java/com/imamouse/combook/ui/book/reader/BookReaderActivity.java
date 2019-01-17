@@ -5,10 +5,8 @@ import android.os.Bundle;
 import com.imamouse.combook.BR;
 import com.imamouse.combook.R;
 import com.imamouse.combook.databinding.ActivityBookReaderBinding;
-import com.zia.easybookmodule.bean.Book;
-import com.zia.easybookmodule.bean.Catalog;
-
-import java.util.ArrayList;
+import com.imamouse.bookmodule.bean.Book;
+import com.imamouse.bookmodule.bean.Catalog;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 

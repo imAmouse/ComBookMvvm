@@ -28,12 +28,7 @@ public class SearchListFragment extends BaseFragment<FragmentSearchListBinding, 
     private SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
-            // 使加载界面可见
-            binding.includeProgressSearchList.setVisibility(View.VISIBLE);
-
-            // 开始搜索
-            ToastUtils.showShort("开始搜索" + viewModel.searchName.get());
-            viewModel.searchBook(viewModel.searchName.get());
+            viewModel.startSearch();
         }
     };
 
@@ -51,10 +46,6 @@ public class SearchListFragment extends BaseFragment<FragmentSearchListBinding, 
     public void initData() {
         // Set OnRefreshListener
         binding.swiperefreshSearchList.setOnRefreshListener(onRefreshListener);
-
-        //
-        binding.includeProgressSearchList.setDrawingCacheEnabled(true);
-        binding.includeProgressSearchList.buildDrawingCache();
     }
 
     @Override
@@ -72,7 +63,6 @@ public class SearchListFragment extends BaseFragment<FragmentSearchListBinding, 
             @Override
             public void onChanged(@Nullable SearchListViewModel searchListViewModel) {
                 //调用 SwipeRefresh 开始搜索
-                onRefreshListener.onRefresh();
                 binding.swiperefreshSearchList.setRefreshing(true);
             }
         });
@@ -80,7 +70,6 @@ public class SearchListFragment extends BaseFragment<FragmentSearchListBinding, 
         viewModel.endSearch.observe(this, new Observer<SearchListViewModel>() {
             @Override
             public void onChanged(@Nullable SearchListViewModel searchViewModel) {
-                binding.includeProgressSearchList.setVisibility(View.INVISIBLE);
                 binding.swiperefreshSearchList.setRefreshing(false);
             }
         });

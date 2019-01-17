@@ -5,18 +5,17 @@ import android.arch.lifecycle.MediatorLiveData;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
 import android.databinding.ObservableList;
-import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.imamouse.combook.BR;
 import com.imamouse.combook.R;
 import com.imamouse.combook.ui.book.chapter.BookInfoChapterItemModel;
-import com.zia.easybookmodule.bean.Book;
-import com.zia.easybookmodule.bean.Catalog;
-import com.zia.easybookmodule.engine.EasyBook;
-import com.zia.easybookmodule.rx.Disposable;
-import com.zia.easybookmodule.rx.Subscriber;
+import com.imamouse.bookmodule.bean.Book;
+import com.imamouse.bookmodule.bean.Catalog;
+import com.imamouse.bookmodule.engine.EasyBook;
+import com.imamouse.bookmodule.rx.Disposable;
+import com.imamouse.bookmodule.rx.Subscriber;
 
 import java.util.List;
 

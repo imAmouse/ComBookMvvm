@@ -2,17 +2,13 @@ package com.imamouse.combook.ui.search.list;
 
 import android.databinding.ObservableField;
 import android.graphics.Bitmap;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.imamouse.combook.ui.book.BookInfoActivity;
-import com.imamouse.combook.ui.search.SearchActivity;
-import com.zia.easybookmodule.bean.Book;
+import com.imamouse.bookmodule.bean.Book;
 
 import me.goldze.mvvmhabit.base.ItemViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
 import me.goldze.mvvmhabit.binding.command.BindingCommand;
-import me.goldze.mvvmhabit.binding.command.BindingConsumer;
 import me.goldze.mvvmhabit.bus.Messenger;
 
 public class SearchListItemModel extends ItemViewModel<SearchListViewModel> {

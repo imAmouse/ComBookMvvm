@@ -35,13 +35,6 @@
                     binding:items="@{searchModel.searchListItemModelObservableList}"
                     binding:layoutManager="@{LayoutManagers.linear()}" />
             </LinearLayout>
-
-            <include
-                android:id="@+id/include_progress_search_list"
-                layout="@layout/progress_search_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="visible" />
         </FrameLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
 </layout>

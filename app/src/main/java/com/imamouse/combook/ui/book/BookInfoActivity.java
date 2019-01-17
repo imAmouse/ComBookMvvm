@@ -1,7 +1,6 @@
 package com.imamouse.combook.ui.book;
 
 import android.arch.lifecycle.Observer;
-import android.databinding.ObservableField;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,16 +19,14 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.dasu.blur.DBlur;
 import com.imamouse.combook.R;
 import com.imamouse.combook.databinding.ActivityBookInfoBinding;
 import com.imamouse.combook.ui.search.SearchActivity;
-import com.imamouse.combook.utils.AndroidScreenUtil;
 import com.imamouse.combook.view.ArcImageView;
-import com.zia.easybookmodule.bean.Book;
+import com.imamouse.bookmodule.bean.Book;
 
 import me.goldze.mvvmhabit.BR;
 import me.goldze.mvvmhabit.base.BaseActivity;
