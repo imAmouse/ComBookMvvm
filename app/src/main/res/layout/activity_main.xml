@@ -125,12 +125,6 @@
             app:layout_constraintStart_toStartOf="@+id/navigation"
             app:srcCompat="@drawable/btn_navigation_book_reader" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            app:layout_constraintBottom_toTopOf="@id/view_bottomnavigation_back"
-            app:srcCompat="@drawable/shadow_return" />
-
         <View
             android:id="@+id/view_bottomnavigation_back"
             android:layout_width="wrap_content"
