@@ -28,7 +28,7 @@
                 android:layout_height="36dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/radius_rectangle_greyblue50"
+                android:background="@drawable/radius_rectangle_bg"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -144,7 +144,7 @@
                     android:paddingRight="15dp"
                     android:paddingBottom="5dp"
                     android:text="@={searchModel.searchProgress}"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/gray700"
                     android:textSize="24sp" />
 
                 <TextView

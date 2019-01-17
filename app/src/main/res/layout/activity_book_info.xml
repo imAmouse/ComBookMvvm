@@ -103,7 +103,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginBottom="10dp"
-                            android:background="@drawable/radius_rectangle_greyblue50"
+                            android:background="@drawable/radius_rectangle_bg"
                             android:nestedScrollingEnabled="false"
                             android:padding="15dp"
                             app:layout_constraintBottom_toBottomOf="parent"

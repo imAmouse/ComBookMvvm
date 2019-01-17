@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="app_bg_color">#F3F3F3</color>
     <color name="comfortableGreen1">#A0EEE1</color>
     <color name="comfortableBlue1">#BEE7E9</color>
     <color name="comfortableBrown2">#D1BA74</color>

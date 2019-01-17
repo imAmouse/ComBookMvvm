@@ -3,12 +3,12 @@
 <!--按钮样式借鉴自作者：gyymz1993
     https://www.jianshu.com/p/e5e8a98fc5d9（简书）-->
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<selector xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android" tools:keep="@drawable/radius_rectangle_write">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#99ECEFF1" />
+            <solid android:color="#AAEEEEEE" />
             <corners
-                android:radius="20dip"/>
+                android:radius="20dp"/>
         </shape>
     </item>
 </selector>

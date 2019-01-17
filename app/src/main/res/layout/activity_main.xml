@@ -15,7 +15,6 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
         android:fitsSystemWindows="false"
         tools:context=".ui.main.MainActivity">
 
@@ -46,7 +45,7 @@
                     android:layout_height="36dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/radius_rectangle_greyblue50"
+                    android:background="@drawable/radius_rectangle_bg"
                     android:gravity="center"
                     android:onClick="@{mainModel.topbarOnClick}"
                     android:orientation="horizontal">
@@ -87,7 +86,6 @@
             android:id="@+id/frame_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@drawable/gradual_color_2"
             app:layout_constraintBottom_toTopOf="@+id/view_bottomnavigation_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

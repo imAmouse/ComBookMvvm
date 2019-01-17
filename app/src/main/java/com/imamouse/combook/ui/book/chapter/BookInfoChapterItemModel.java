@@ -30,32 +30,10 @@ public class BookInfoChapterItemModel extends ItemViewModel<BookInfoViewModel> {
     public View.OnClickListener openCatalog = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            EasyBook.getContent(viewModel.book, chapter.get())
-                    .subscribe(new Subscriber<List<String>>() {
-                        @Override
-                        public void onFinish(@NonNull List<String> strings) {
-                            //返回该章节所有内容，按行保存在集合内，需要自行调整格式
-                            Bundle bundle = new Bundle();
-                            bundle.putStringArrayList("text", (ArrayList<String>) strings);
-                            bundle.putString("chapterName", chapterName.get());
-                            viewModel.startActivity(BookReaderActivity.class, bundle);
-                        }
-
-                        @Override
-                        public void onError(@NonNull Exception e) {
-
-                        }
-
-                        @Override
-                        public void onMessage(@NonNull String s) {
-
-                        }
-
-                        @Override
-                        public void onProgress(int i) {
-
-                        }
-                    });
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("book", viewModel.book);
+            bundle.putSerializable("chapter", chapter.get());
+            viewModel.startActivity(BookReaderActivity.class, bundle);
         }
     };
 }

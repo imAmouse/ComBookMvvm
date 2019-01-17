@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/radius_rectangle_greyblue50"
+            android:background="@drawable/radius_rectangle_write"
             android:hint="..."
             android:minEms="2"
             android:paddingStart="5dp"

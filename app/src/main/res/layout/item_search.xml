@@ -10,42 +10,34 @@
             type="com.imamouse.combook.ui.search.list.SearchListItemModel" />
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
         android:orientation="vertical"
         binding:onClickCommand="@{searchItemModel.itemClick}">
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
             android:layout_weight="1"
-            android:background="@drawable/radius_rectangle_greyblue50"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageBook"
-                android:layout_width="148dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                android:contentDescription="@string/book_title"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_book_init"
-                binding:url="@{searchItemModel.imageUrl}" />
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0px">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="50dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:paddingRight="10dp"
-                android:visibility="visible">
+                android:paddingEnd="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -150,16 +142,27 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-            binding:srcCompat="@drawable/shadow_diffusion" />
+        <android.support.v7.widget.CardView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/comfortableBlue1"
+            app:cardElevation="0dp">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imageBook"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/book_title"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_book_init"
+                binding:url="@{searchItemModel.imageUrl}" />
+
+        </android.support.v7.widget.CardView>
+
+    </FrameLayout>
 </layout><!--特别感谢--><!--作者：GIS小博工作室--><!--来源：CSDN--><!--原文：https://blog.csdn.net/GISuuser/article/details/51982294--><!--版权声明：本文为博主原创文章，转载请附上博文链接！-->

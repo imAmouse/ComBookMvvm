@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.imamouse.combook.BR;
 import com.imamouse.combook.R;
 import com.imamouse.combook.databinding.ActivityBookReaderBinding;
+import com.zia.easybookmodule.bean.Book;
+import com.zia.easybookmodule.bean.Catalog;
 
 import java.util.ArrayList;
 
@@ -34,9 +36,12 @@ public class BookReaderActivity extends BaseActivity<ActivityBookReaderBinding, 
 
         // 接收 Activity 启动时传入的小说信息
         Bundle bundle = getIntent().getExtras();
-        ArrayList<String> textList = bundle.getStringArrayList("text");
-        String chapterName = bundle.getString("chapterName");
-        viewModel.initText(textList, chapterName);
+        Book book= (Book) bundle.getSerializable("book");
+        Catalog catalog= (Catalog) bundle.getSerializable("chapter");
+
+        viewModel.book=book;
+
+        viewModel.initCatalog(catalog);
     }
 
     @Override
