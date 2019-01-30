@@ -1,1 +1,1 @@
-include ':app', ':bookmodule', ':bookreader', ':shapeloading'
+include ':app', ':bookmodule', ':bookreader'

@@ -53,6 +53,4 @@ dependencies {
     implementation project(':bookreader')
 
     implementation 'com.dasu.image:blur:0.0.4'
-
-    implementation project(':shapeloading')
 }
